@@ -1,13 +1,25 @@
+import Typewriter from "@/components/Typewriter"
+
 export default function Home() {
   return (
-    <main style={{ padding: "40px", fontFamily: "sans-serif" }}>
-      <h1>Lucas</h1>
 
-      <p>Software Developer</p>
+    <main className="main-content">
 
-      <p>
-        <a href="/blog">blog</a>
+      <Typewriter />
+
+      <div className="divider my-6"></div>
+
+      <p className="fade-in">
+        software developer
       </p>
+
+      <div className="divider my-6"></div>
+
+      <p className="fade-in" style={{ animationDelay: "200ms" }}>
+        building things on the internet
+      </p>
+
     </main>
+
   )
 }
