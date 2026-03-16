@@ -1,161 +1,98 @@
 @import "tailwindcss";
-@plugin "../node_modules/@tailwindcss/typography";
+@plugin "@tailwindcss/typography";
 
 /* ----------------------------- */
-/* ROOT THEME VARIABLES */
+/* MODERN CSS VARIABLES (Reference Style) */
 /* ----------------------------- */
 
 :root {
-  --background: #0b0b0b;
-  --foreground: #e5e5e5;
-
-  --panel: #111111;
-  --border: #1e1e1e;
-
-  --accent: #fb512f;
-  --muted: #8a8a8a;
+  --background: lab(2.75 0 0);
+  --foreground: lab(98.26 0 0);
+  
+  --primary: #fb5130;
+  --primary-foreground: #fff;
+  
+  --muted: lab(15.2 0 0);
+  --muted-foreground: lab(66.1 0 0);
+  
+  --border: lab(100 0 0 / 0.1);
+  --accent: lab(15.2 0 0);
+  
+  --sidebar: lab(7.78 0 0);
+  --sidebar-border: lab(100 0 0 / 0.1);
+  
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --spacing-unit: 0.25rem;
 }
-
-/* Tailwind theme bridge */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
-  --color-panel: var(--panel);
-  --color-border: var(--border);
-
-  --color-accent: var(--accent);
+  --color-primary: var(--primary);
   --color-muted: var(--muted);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
 }
 
 /* ----------------------------- */
-/* BASE STYLES */
+/* BASE & RESET */
 /* ----------------------------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-mono);
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 /* ----------------------------- */
-/* LINKS */
-/* ----------------------------- */
-
-a {
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--foreground);
-}
-
-/* ----------------------------- */
-/* ACCENT TEXT */
-/* ----------------------------- */
-
-.highlight {
-  color: var(--accent);
-}
-
-/* ----------------------------- */
-/* DIVIDER LINES */
-/* ----------------------------- */
-
-.divider {
-  border-bottom: 1px solid var(--border);
-}
-
-/* ----------------------------- */
-/* SIDEBAR STYLE */
+/* SIDEBAR (Compacta como a referência) */
 /* ----------------------------- */
 
 .sidebar {
-  width: 220px;
+  width: 112px; /* w-28 da referência */
   height: 100vh;
-
   position: fixed;
   left: 0;
   top: 0;
-
-  padding: 24px;
-
-  border-right: 1px solid var(--border);
-  background: var(--panel);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid var(--sidebar-border);
+  background: var(--sidebar);
 }
 
 .sidebar nav {
-  margin-top: 32px;
-
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
 .sidebar a {
-  color: var(--muted);
+  display: flex;
+  height: 40px;
+  width: 100%;
+  align-items: center;
+  padding-left: 16px;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid var(--border);
 }
 
 .sidebar a:hover {
+  background: var(--accent);
   color: var(--foreground);
-}
-
-.logo {
-  font-weight: bold;
-}
-
-.accent {
-  color: var(--accent);
-}
-
-/* ----------------------------- */
-/* TYPEWRITER CURSOR */
-/* ----------------------------- */
-
-.cursor {
-  display: inline-block;
-  margin-left: 4px;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* ----------------------------- */
-/* FADE IN ANIMATION */
-/* ----------------------------- */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(6px);
-  animation: fadeIn 0.4s ease forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ----------------------------- */
-/* TERMINAL PROMPT STYLE */
-/* ----------------------------- */
-
-.prompt::before {
-  content: ">";
-  color: var(--accent);
-  margin-right: 8px;
 }
 
 /* ----------------------------- */
@@ -163,7 +100,79 @@ a:hover {
 /* ----------------------------- */
 
 .main-content {
-  margin-left: 240px;
-  padding: 60px;
-  max-width: 720px;
+  margin-left: 112px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 10);
+}
+
+.container-limit {
+  width: 100%;
+  max-width: 42rem; /* --container-2xl */
+}
+
+/* ----------------------------- */
+/* TYPEWRITER & ANIMATIONS */
+/* ----------------------------- */
+
+.typewriter-container {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.accent {
+  color: var(--primary);
+}
+
+.cursor {
+  color: var(--primary);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ----------------------------- */
+/* RESPONSIVE INDICATOR (A caixinha branca) */
+/* ----------------------------- */
+
+.res-indicator {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: white;
+  color: black;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  z-index: 9999;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* ----------------------------- */
+/* MOBILE */
+/* ----------------------------- */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid var(--sidebar-border);
+  }
+  
+  .sidebar nav { flex-direction: row; }
+  .sidebar a { border-bottom: none; border-right: 1px solid var(--border); }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 40px 20px;
+  }
 }

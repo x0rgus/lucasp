@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description: "personal website",
 };
 
+import ResponsiveIndicator from "@/components/ResponsiveIndicator";
+
 export default function RootLayout({
   children,
 }: {
@@ -29,8 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ResponsiveIndicator />
         <Sidebar />
-
+...
         <main className="main-content">
           {children}
         </main>
