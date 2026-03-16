@@ -33,7 +33,6 @@ export default function RootLayout({
       >
         <ResponsiveIndicator />
         <Sidebar />
-...
         <main className="main-content">
           {children}
         </main>

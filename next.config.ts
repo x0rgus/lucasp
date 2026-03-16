@@ -6,9 +6,8 @@ const withMDX = createMDX({
 });
 
 const nextConfig: NextConfig = {
-  // Adiciona suporte a MDX nas extensões de página
+  // Add support for MDX in page extensions
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  // Opcional: Se você quiser suporte a Rust-based compiler para MDX no futuro
   experimental: {
     mdxRs: true,
   },

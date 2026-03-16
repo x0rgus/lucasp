@@ -17,14 +17,14 @@ export default function Typewriter() {
 
     const currentWord = words[wordIndex]
     
-    // Define a velocidade base: escrevendo (120ms), apagando (60ms)
+    // Set base speed: writing (120ms), deleting (60ms)
     let speed = deleting ? 60 : 120
 
-    // Se a palavra estiver completa, espera 2 segundos
+    // If word is complete, wait 2 seconds
     if (!deleting && text === currentWord) {
       speed = 2000 
     } 
-    // Se acabou de apagar, espera meio segundo antes da próxima
+    // If finished deleting, wait half a second before the next one
     else if (deleting && text === "") {
       speed = 500
     }

@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 /* ----------------------------- */
-/* MODERN CSS VARIABLES (Reference Style) */
+/* MODERN CSS VARIABLES
 /* ----------------------------- */
 
 :root {
@@ -54,11 +54,11 @@ body {
 }
 
 /* ----------------------------- */
-/* SIDEBAR (Compacta como a referência) */
+/* SIDEBAR 
 /* ----------------------------- */
 
 .sidebar {
-  width: 112px; /* w-28 da referência */
+  width: 112px;
   height: 100vh;
   position: fixed;
   left: 0;
@@ -103,7 +103,7 @@ body {
   margin-left: 112px;
   min-height: 100vh;
   display: flex;
-  align-items: center; /* Centraliza verticalmente */
+  align-items: center; /* Vertical center */
   padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 10);
 }
 
@@ -137,7 +137,7 @@ body {
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ----------------------------- */
-/* RESPONSIVE INDICATOR (A caixinha branca) */
+/* RESPONSIVE INDICATOR
 /* ----------------------------- */
 
 .res-indicator {
@@ -159,6 +159,8 @@ body {
 /* ----------------------------- */
 
 @media (max-width: 768px) {
+  .logo { display: none; }
+
   .sidebar {
     width: 100%;
     height: auto;
